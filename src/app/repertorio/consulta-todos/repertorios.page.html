@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Repertórios
+    </ion-title>
+    <ion-button slot="end" class="ion-margin-end" (click)="criar()">
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen color="light">
+
+  <ion-list *ngIf="repertorioVigente">
+    <ion-list-header lines="full">
+      <ion-label>
+        <h1>Repertório vigente</h1>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item-sliding>
+      <ion-item lines="full" (click)="consultar(repertorioVigente)">
+        <ion-label>{{repertorioVigente.mes}}</ion-label>
+
+        <ion-chip outline>
+          {{repertorioVigente.musicas.length}}
+        </ion-chip>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+        <ion-item-option>
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header lines="full">
+      <ion-label>
+        <h1>Repertórios</h1>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let repertorio of repertorios">
+      <ion-item lines="full" (click)="consultar(repertorio)">
+        <ion-label>{{repertorio.mes}}</ion-label>
+
+        <ion-chip outline>
+          {{repertorio.musicas.length}}
+        </ion-chip>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+        <ion-item-option>
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
